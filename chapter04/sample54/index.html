@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p>{{ message }}</p>
+    <p>{{ name }}</p>
+    <p>{{ myData }}</p>
+    <button @click="message = 'ボタンから変更'">変更</button>
+  </div>
+
+  <div id="app2"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var data = {
+      message: 'こんにちは',
+      name: 'たろう',
+    }
+
+    var vm = new Vue({
+      // el: "#app",
+      // data: {
+      //   message: 'こんにちは',
+      //   name: 'たろう',
+      // },
+      data: data,
+      computed: {
+        myData: function() {
+          return this.$data;
+        }
+      }
+    });
+
+    vm.$mount("#app");
+    // console.log(vm.$data === data);
+
+    new Vue({
+      // el: "#app2",
+      data: {
+        name: 'たろう',
+      },
+      template: '<h1>こんにちは{{ name }}</h1>'
+    }).$mount("#app2");
+
+  </script>
+</body>
+</html>
