@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1>こんにちは、{{ name }}</h1>
+    <button @click="name = '太郎さん'">名前を変更</button>
+    <button @click="destroy">インスタンスを破壊</button>
+    <hello></hello>
+    <hello></hello>
+    <hello></hello>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    Vue.component('hello', {
+      template: '<p>こんにちは</p>'
+    });
+
+    new Vue({
+      el: "#app",
+      data: {
+        name: 'よしぴー',
+      },
+      beforeCreate: function() {
+        console.log('beforeCreate');
+      },
+      created: function() {
+        console.log('created');
+      },
+      beforeMount: function() {
+        console.log('beforeMount');
+      },
+      mounted: function() {
+        console.log('mounted');
+      },
+      beforeUpdate: function() {
+        console.log('beforeUpdate');
+      },
+      updated: function() {
+        console.log('updated');
+      },
+      beforeDestroy: function() {
+        console.log('beforeDestroy');
+      },
+      destroyed: function() {
+        console.log('destroyed');
+      },
+      methods: {
+        destroy: function() {
+          this.$destroy();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
